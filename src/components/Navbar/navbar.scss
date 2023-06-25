@@ -1,0 +1,67 @@
+.navbar {
+    color: #fff;
+    font-size: 14px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.5) 50%) ;
+
+    &.scrolled {
+        background-color: var(--main-color);
+    }
+    .container  {
+        padding: 0 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+        .left {
+            display: flex;
+            align-items: center;
+            img {
+                width: 96px;
+                margin-right: 20px;
+            }
+            span {
+                margin-right: 20px;
+                cursor: pointer;
+            }
+        }
+
+        .right {
+            display: flex;
+            align-items: center;
+            .icon {
+                margin: 0 15px;
+                cursor: pointer;
+            }
+            img {
+                width: 20px;
+                height: 20px;
+                border-radius: 20px;
+                object-fit: cover;
+                cursor: pointer;
+            }
+            .profile {
+                .options {
+                    display: none;
+                    background-color: var(--main-color);
+                    border-radius: 5px;
+                }
+                span {
+                    padding: 10px;
+                    cursor: pointer;
+                }
+                &:hover {
+                    .options{
+                        display: flex;
+                        flex-direction: column;
+                        position: absolute;
+                    }
+                }
+            }
+        }
+    }
+}
