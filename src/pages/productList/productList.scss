@@ -1,9 +1,8 @@
 @import '../../main.scss';
 
-.userList {
-    flex: 4;
+.productList {
     padding: 20px;
-    .userListUser {
+    .productListItem {
         @include flexCenter(row);
         img {
             width: 32px;
@@ -14,7 +13,7 @@
         }
 
     }
-    .userListEdit{
+    .productListEdit{
         border: none;
         border-radius: 10px;
         padding: 5px 10px;
@@ -24,7 +23,7 @@
         margin-right: 10px;
         font-weight: 400;
     }
-    .userListDelete{
+    .productListDelete{
         cursor: pointer;
         color: red;
     }

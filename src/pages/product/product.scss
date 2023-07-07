@@ -1,0 +1,110 @@
+@import "../../main.scss";
+
+.product {
+  padding: 20px;
+  .productTitleContainer {
+    @include flexCenter(row);
+    justify-content: space-between;
+    .productAddButton {
+      width: 80px;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      background-color: teal;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+    }
+  }
+  .productTop {
+    display: flex;
+    &Left {
+      flex: 1;
+    }
+    &Right {
+      flex: 1;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+      .productInfoTop {
+        display: flex;
+        align-items: center;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 10px;
+        }
+        .productName{
+            font-weight: 600;
+        }
+      }
+      .productInfoBottom{
+        margin-top: 10px;
+        .productInfoItem{
+            width: 150px;
+            display: flex;
+            justify-content: space-between;
+            .productInfoKey{
+
+            }
+            .productInfoValue{
+                font-weight: 100;
+            }
+        }
+      }
+    }
+  }
+  .productBottom{
+    padding: 20px;
+      margin: 20px;
+      box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+      .productForm{
+        display: flex;
+        justify-content: space-between;
+        &Left{
+            display: flex;
+            flex-direction: column;
+            &>label{
+                margin-bottom: 10px;
+                color: gray;
+            }
+            &>input{
+                margin-bottom: 10px;
+                border: none;
+                padding: 5px;
+                border: 1px solid gray;
+            }
+            &>select{
+                margin-bottom: 10px;
+            }
+        }
+        &Right{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .productUpload{
+                display: flex;
+                align-items: center;
+                img{
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 10px;
+                    object-fit: cover;
+                    margin-right: 20px;
+                }
+            }
+            .productButton{
+                border: none;
+                background-color: darkblue;
+                padding: 5px;
+                color: white;
+                font-weight: 600;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+        }
+      }
+  }
+}
