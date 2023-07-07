@@ -1,0 +1,37 @@
+@import '../../main.scss';
+
+.sidebar{
+    flex: 1;
+    height: calc(100vh - 50px);
+    background-color: rgb(237, 237, 237);
+    position: sticky;
+    top: 50px;
+    .sidebarWrapper {
+        padding: 15px;
+        color: #555;
+        .sidebarMenu {
+            .sidebarTitle {
+                font-size: 15px;
+                color: rgb(70, 66, 66);
+            }
+            .sidebarList {
+                list-style: none;
+                padding: 2px 10px;
+                .sidebarListItem {
+                    padding: 3px;
+                    cursor: pointer;
+                    @include flexCenter(row);
+                    justify-content: start;
+                    border-radius: 10px;
+                    &:hover, &:active {
+                        background-color: rgb(216, 216, 216);
+                    }
+                    .sidebarIcons {
+                        margin-right: 5px;
+                        font-size: 20px !important;
+                    }
+                }
+            }
+        }
+    }
+}

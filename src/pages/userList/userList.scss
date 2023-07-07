@@ -1,0 +1,30 @@
+@import '../../main.scss';
+
+.userList {
+    flex: 4;
+    .userListUser {
+        @include flexCenter(row);
+        img {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+    }
+    .userListEdit{
+        border: none;
+        border-radius: 10px;
+        padding: 5px 10px;
+        background-color: rgb(16, 222, 16);
+        color: white;
+        cursor: pointer;
+        margin-right: 10px;
+        font-weight: 400;
+    }
+    .userListDelete{
+        cursor: pointer;
+        color: red;
+    }
+}

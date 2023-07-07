@@ -1,0 +1,54 @@
+@import '../../main.scss';
+
+.widgetLg {
+    flex: 2;
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    border-radius: 10px;
+    .widgetLgTitle{
+        font-weight: 600;
+        font-size: 22px;
+    }
+    .widgetLgTable {
+        width: 100%;
+        border-spacing: 20px;
+        .widgetLgTr{
+            .widgetLgTh{
+                text-align: left;
+            }
+            .widgetLgUser{
+                @include flexCenter(row);
+                justify-content: start;
+                font-weight: 600;
+                .widgetLgImg{
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                }
+            }
+            .widgetLgDate, .widgetLgAmount{
+                font-weight: 300;
+            }
+            .widgetLgStatus{
+                .widgetLgButton{
+                    padding: 5px 7px;
+                    border: none;
+                    border-radius: 10px;
+                    &.Approved{
+                        background-color: rgb(198, 252, 198);
+                        color: darkgreen;
+                    }
+                    &.Declined{
+                        background-color: #fff0f1;
+                        color: darkred;
+                    }
+                    &.Pending{
+                        background-color: #ebf1fe;
+                        color: darkblue;
+                    }
+                }
+            }
+        }
+    }
+}

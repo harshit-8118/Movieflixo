@@ -1,0 +1,41 @@
+@import '../../main.scss';
+
+.featured {
+    @include flexCenter(row);
+    justify-content: space-between;
+    .featuredItem {
+        flex: 1;
+        margin: 0 20px;
+        padding: 30px;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+
+        .featuredTitle {
+            font-size: 20px;
+        }
+        .featuredMoneyContainer {
+            @include flexCenter(row);
+            .featuredMoney{
+                font-size: 30px;
+                font-weight: 600;
+            }
+            .featuredMoneyRate{
+                @include flexCenter(row);
+                margin-left: 20px;
+                .featuredIcon {
+                    font-size: 14px;
+                    margin-left: 5px;
+                    color: green;
+                }
+                .featuredIcon.Negative {
+                    color: red;
+                }
+            }
+        }
+        .featuredSub{
+            font-size: 15px;
+            color: gray;
+        }
+     }
+}
