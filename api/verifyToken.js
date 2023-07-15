@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 
-module.exports = verify = (req, res, next) => {
+const verify = (req, res, next) => {
     const authHeader = req.headers.token;
     if(authHeader){
         const token = authHeader.split(' ')[1];
@@ -9,6 +9,7 @@ module.exports = verify = (req, res, next) => {
         jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
             if(err) {
                 res.status(403).json('token is not valid');
+                return;
             }
             req.user = user;
             next();
@@ -17,3 +18,5 @@ module.exports = verify = (req, res, next) => {
         return res.status(401).json('you are not authenticated');
     }
 }
+
+module.exports = verify;
