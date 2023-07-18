@@ -7,6 +7,7 @@ import {
   ManageAccounts,
   MessageOutlined,
   PersonOutlineOutlined,
+  PlayCircleOutline,
   Report,
   ShoppingCart,
   Timeline,
@@ -47,10 +48,10 @@ const Sidebar = () => {
                 Users
               </li>
             </Link>
-            <Link to="/products" className="link">
+            <Link to="/movies" className="link">
               <li className="sidebarListItem">
-                <ShoppingCart className="sidebarIcons" />
-                Products
+                <PlayCircleOutline className="sidebarIcons" />
+                Movies
               </li>
             </Link>
             <li className="sidebarListItem">

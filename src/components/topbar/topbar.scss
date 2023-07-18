@@ -50,6 +50,25 @@
                 border-radius: 50%;
                 cursor: pointer;
             }
+            .topbarIconToggle{
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+            }
+            .hidden{
+                display: none;
+            }
+            .log-in-out{
+                transition: all 1s ease-in-out;
+                position: absolute;
+                background-color: teal;
+                border: none;
+                border-radius: 5px;
+                padding: 8px 6px;
+                color: white;
+                margin-top: 10px;
+                cursor: pointer;
+            }
         }
     }
 }
