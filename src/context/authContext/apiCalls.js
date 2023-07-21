@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {loginFailure, loginStart, loginSuccess, logout } from './AuthActions';
-import {Navigate} from 'react-router-dom';
+
 export const login = async (user, dispatch) => {
     dispatch(loginStart);
     try{    
@@ -11,5 +11,5 @@ export const login = async (user, dispatch) => {
     }
 }
 export const Logout = (dispatch) => {
-    dispatch(logout);
+    dispatch(logout());
 }
