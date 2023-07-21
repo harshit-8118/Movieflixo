@@ -1,6 +1,19 @@
 @import '../../main.scss';
 
 .movieList {
+    .movieListTitleContainer {
+        @include flexCenter(row);
+        justify-content: space-between;
+        .movieListAddButton {
+          border: none;
+          cursor: pointer;
+          padding: 5px 10px;
+          background-color: teal;
+          border-radius: 5px;
+          color: white;
+          font-size: 16px;
+        }
+      }
     padding: 20px;
     .movieListItem {
         @include flexCenter(row);

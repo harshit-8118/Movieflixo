@@ -13,7 +13,6 @@ function MovieList() {
     getMovies(dispatch);
   }, [dispatch])
   
-  console.log(movies);
   const handleDelete = (movieID) => {
     deleteMovie(movieID, dispatch);
   }
@@ -55,6 +54,12 @@ function MovieList() {
 
   return (
     <div className="movieList">
+      <div className="movieListTitleContainer">
+        <h1 className="movieListTitle">Movie list</h1>
+        <Link to="/newMovie">
+          <button className="movieListAddButton">Create new Movie</button>
+        </Link>
+      </div>
       <DataGrid
         rows={movies}
         columns={columns}

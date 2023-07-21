@@ -1,15 +1,14 @@
-.newProduct{
+.newMovie{
     flex: 4;
     padding: 20px;
-    .addProductForm{
+    .addMovieForm{
         display: flex;
-        flex-direction: column;
         flex-wrap: wrap;
-        .addProductItem{
+        .addMovieItem{
             width: 250px;
             display: flex;
             flex-direction: column;
-            margin-bottom: 10px;
+            padding: 20px;
             &>label{
                 margin-bottom: 10px;
                 font-weight: 600;
@@ -18,12 +17,18 @@
             &>input{
                 padding: 10px;
             }
-            .addProductSelect{
+            .addMovieSelect{
                 padding: 10px;
+                height: max-content;
+                option{
+                    // font-size: 14px;
+                }
             }
         }
-        .addProductButton{
-            width: 200px;
+        .addMovieButton{
+            width: 180px;
+            align-self: center;
+            height: 60px;
             border-radius: 5px;
             padding: 7px 10px;
             background-color: darkblue;
