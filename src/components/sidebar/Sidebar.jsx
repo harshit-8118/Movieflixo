@@ -1,15 +1,14 @@
 import "./sidebar.scss";
 import {
-  AttachMoneyOutlined,
   Email,
   ForumOutlined,
   LineStyle,
+  ListAlt,
   ManageAccounts,
   MessageOutlined,
   PersonOutlineOutlined,
   PlayCircleOutline,
   Report,
-  ShoppingCart,
   Timeline,
   TrendingUp,
 } from "@mui/icons-material";
@@ -54,10 +53,12 @@ const Sidebar = () => {
                 Movies
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <AttachMoneyOutlined className="sidebarIcons" />
-              Transactions
-            </li>
+            <Link to="/lists" className="link">
+              <li className="sidebarListItem">
+                <ListAlt className="sidebarIcons" />
+                Lists
+              </li>
+            </Link>
             <li className="sidebarListItem">
               <Report className="sidebarIcons" />
               Reports
