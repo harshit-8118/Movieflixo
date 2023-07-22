@@ -1,0 +1,104 @@
+@import "../../main.scss";
+
+.movie {
+  padding: 20px;
+  .movieTitleContainer {
+    @include flexCenter(row);
+    justify-content: space-between;
+    .movieAddButton {
+      width: 80px;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      background-color: teal;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+    }
+  }
+  .movieTop {
+    display: flex;
+    &Right {
+      flex: 1;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+      .movieInfoTop {
+        display: flex;
+        align-items: center;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 10px;
+        }
+        .movieName{
+            font-weight: 600;
+        }
+      }
+      .movieInfoBottom{
+        margin-top: 10px;
+        .movieInfoItem{
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+            .movieInfoValue{
+                font-weight: 300;
+            }
+        }
+      }
+    }
+  }
+  .movieBottom{
+    padding: 20px;
+      margin: 20px;
+      box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+      .movieForm{
+        display: flex;
+        justify-content: space-between;
+        &Left{
+            display: flex;
+            flex-direction: column;
+            &>label{
+                margin-bottom: 10px;
+                color: gray;
+            }
+            &>input{
+                margin-bottom: 10px;
+                border: none;
+                padding: 5px;
+                border: 1px solid gray;
+            }
+            &>select{
+                margin-bottom: 10px;
+            }
+        }
+        &Right{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .movieUpload{
+                display: flex;
+                align-items: center;
+                img{
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 10px;
+                    object-fit: cover;
+                    margin-right: 20px;
+                }
+            }
+            .movieButton{
+                border: none;
+                background-color: darkblue;
+                padding: 5px;
+                color: white;
+                font-weight: 600;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+        }
+      }
+  }
+}

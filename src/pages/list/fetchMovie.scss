@@ -1,0 +1,49 @@
+
+.movieL {
+    padding: 10px;
+    .movieLTop {
+      display: flex;
+      flex-direction: column;
+        flex: 1;
+        padding: 10px;
+        margin: 5px;
+        box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+        .movieLInfoTop {
+          display: flex;
+          align-items: center;
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+          }
+          .movieLName{
+              font-weight: 600;
+          }
+        }
+        .movieLInfoBottom{
+          margin-top: 10px;
+          display: flex;
+          align-items: center;
+          .movieLInfoItem{
+            width: max-content;
+            margin: 0 10px;
+              display: flex;
+              justify-content: space-between;
+              .movieLInfoValue{
+                  font-weight: 300;
+                  margin-left: 5px;
+              }
+          }
+          .movieLListEdit{
+            border: none;
+            background-color: rgb(88, 230, 88);
+            color: white;
+            border-radius: 10px;
+            padding: 5px 10px;
+          }
+        }
+    }
+  }
+  
