@@ -1,0 +1,69 @@
+.newList {
+  flex: 4;
+  padding: 20px;
+  .addListForm {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    .addListItem {
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      & > label {
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: gray;
+      }
+      & > input {
+        padding: 10px;
+      }
+      .addListSelect {
+        padding: 10px;
+        option {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .addMovieForm {
+    .addListItem {
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+    //   padding: 20px;
+      & > label {
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: gray;
+      }
+      & > input {
+        padding: 10px;
+      }
+      .addListSelect {
+        padding: 10px;
+        option {
+          font-size: 14px;
+        }
+      }
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .addListButton {
+      width: 400px;
+      align-self: center;
+      height: 60px;
+      border-radius: 5px;
+      padding: 7px 10px;
+      background-color: darkblue;
+      cursor: pointer;
+      border: none;
+      margin-top: 30px;
+      font-weight: 600;
+      color: white;
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+  }
+}
