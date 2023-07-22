@@ -1,0 +1,42 @@
+@import '../../main.scss';
+
+.movieListLists {
+    .movieListListsTitleContainer {
+        @include flexCenter(row);
+        justify-content: space-between;
+        .movieListListsAddButton {
+          border: none;
+          cursor: pointer;
+          padding: 5px 10px;
+          background-color: teal;
+          border-radius: 5px;
+          color: white;
+          font-size: 16px;
+        }
+      }
+    padding: 20px;
+    .movieListListsItem {
+        @include flexCenter(row);
+        img {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+    }
+    .movieListListsEdit{
+        border: none;
+        border-radius: 10px;
+        padding: 5px 10px;
+        background-color: rgb(16, 222, 16);
+        color: white;
+        cursor: pointer;
+        margin-right: 10px;
+        font-weight: 400;
+    }
+    .movieListListsDelete{
+        cursor: pointer;
+        color: red;
+    }
+}
