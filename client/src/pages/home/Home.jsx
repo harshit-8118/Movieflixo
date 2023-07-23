@@ -4,6 +4,7 @@ import Featured from "../../components/featured/Featured";
 import List from "../../components/list/List";
 import "./home.scss";
 import axios from "axios";
+import Footer from "../../components/footer/Footer";
 
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
@@ -12,6 +13,7 @@ const Home = ({ type }) => {
   useEffect(() => {
     const getRandomLists = async () => {
       try {
+        console.log(JSON.parse(localStorage.getItem("user")).accessToken);
         const res = await axios.get(
           `lists${type ? "?type=" + type : ""}${
             genre ? "&genre=" + genre : ""
@@ -19,7 +21,8 @@ const Home = ({ type }) => {
           {
             headers: {
               token:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjFhYjBlNGJjYjE3OWRjMDBlOWRkZiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2ODk2MjcwMTMsImV4cCI6MTY5MDA1OTAxM30.rjKtgQdRx04Lv00J58gqqB96d0PwKRO9nL8kMva39V4",
+                "Bearer " +
+                JSON.parse(localStorage.getItem("user")).accessToken,
             },
           }
         );
@@ -33,12 +36,9 @@ const Home = ({ type }) => {
   return (
     <div className="home">
       <Navbar />
-      <Featured type={type} />
-      {
-        lists && lists.map(list => (
-          <List key={list._id} list={list} />
-        ))
-      }
+      <Featured type={type} setGenre={setGenre} />
+      {lists && lists.map((list) => <List key={list._id} list={list} />)}
+      <Footer />
     </div>
   );
 };
