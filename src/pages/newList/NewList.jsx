@@ -6,7 +6,7 @@ import { ListsContext } from "../../context/listsContext/ListsContext";
 import { createList } from "../../context/listsContext/ListsApiCalls";
 
 function NewList() {
-  const [list, setList] = useState(null);
+  const [list, setList] = useState({ type: "movie" });
 
   const { dispatch } = useContext(ListsContext);
   const { movies, dispatch: dispatchMovies } = useContext(MovieContext);
@@ -33,7 +33,7 @@ function NewList() {
   return (
     <div className="newList">
       <h1 className="addListTitle">New List</h1>
-      <div style={{ display: "flex", flexWrap: 'wrap' }}>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
         <div className="addListForm">
           <div className="addListItem">
             <label>Title</label>

@@ -39,7 +39,7 @@ export const updateListFailure = () => ({
     type: "UPDATE_LIST_FAILURE"
 })
 
-// delete movie 
+// delete list 
 export const deleteListStart = () => ({
     type: "DELETE_LIST_START"
 })

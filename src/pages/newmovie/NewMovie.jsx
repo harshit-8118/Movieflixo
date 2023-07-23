@@ -5,7 +5,6 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { createMovie } from "../../context/movieContext/MovieApiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 
-
 function NewMovie() {
   const [movie, setMovie] = useState(null);
   const [img, setImg] = useState(null);
@@ -16,7 +15,7 @@ function NewMovie() {
   const [uploaded, setUploaded] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  const {dispatch} = useContext(MovieContext);
+  const { dispatch } = useContext(MovieContext);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -25,54 +24,60 @@ function NewMovie() {
 
   const upload = (items) => {
     let flag = true;
-    items.length && items.forEach(item => {
-      if(item.file === null){
-        flag = false;
-      }
-    });
-    flag && items.forEach((item) => {
-      if (item.file != null){
-      const fileName = new Date().getTime() + item.label + item.file.name;
-      const storageRef = ref(storage, `/items/${fileName}`);
-      const uploadTask = uploadBytesResumable(storageRef, item.file);
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-            setProgress((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-          switch (snapshot.state) {
-            case "paused":
-              console.log("paused...");
-              break;
-            case "running":
-              console.log("uploading...");
-              break;
-            case'success': console.log('uploaded'); break;
-          }
-        },
-        (error) => {
-          switch (error.code) {
-            case "storage/unauthorized":
-              console.log("not authorized ");
-              break;
-            case "storage/canceled":
-              console.log("cancelled");
-              break;
-            case "storage/unknown":
-              console.log("unknown storage");
-              break;
-          }
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            setUploaded(prev => prev + 1);
-            setMovie((prev) => {
-              return { ...prev, [item.label]: url };
-            });
-          });
+    items.length &&
+      items.forEach((item) => {
+        if (item.file === null) {
+          flag = false;
         }
-        );
-      }
-    });
+      });
+    flag &&
+      items.forEach((item) => {
+        if (item.file != null) {
+          const fileName = new Date().getTime() + item.label + item.file.name;
+          const storageRef = ref(storage, `/items/${fileName}`);
+          const uploadTask = uploadBytesResumable(storageRef, item.file);
+          uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+              setProgress(
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              );
+              switch (snapshot.state) {
+                case "paused":
+                  console.log("paused...");
+                  break;
+                case "running":
+                  console.log("uploading...");
+                  break;
+                case "success":
+                  console.log("uploaded");
+                  break;
+              }
+            },
+            (error) => {
+              switch (error.code) {
+                case "storage/unauthorized":
+                  console.log("not authorized ");
+                  break;
+                case "storage/canceled":
+                  console.log("cancelled");
+                  break;
+                case "storage/unknown":
+                  console.log("unknown storage");
+                  break;
+              }
+            },
+            () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                setUploaded((prev) => prev + 1);
+                setMovie((prev) => {
+                  return { ...prev, [item.label]: url };
+                });
+              });
+            }
+          );
+        }
+      });
   };
 
   const handleUpload = (e) => {
@@ -91,7 +96,7 @@ function NewMovie() {
     createMovie(movie, dispatch);
     setUploaded(0);
     setProgress(0);
-  }
+  };
 
   return (
     <div className="newMovie">
@@ -99,7 +104,8 @@ function NewMovie() {
       <form className="addMovieForm">
         <div className="addMovieItem">
           <label>Image</label>
-          <input required
+          <input
+            required
             type="file"
             id="img"
             onChange={(e) => setImg(e.target.files[0])}
@@ -167,6 +173,15 @@ function NewMovie() {
           />
         </div>
         <div className="addMovieItem">
+          <label>Duration</label>
+          <input
+            type="text"
+            placeholder="1 hour 14 mins"
+            name="duration"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="addMovieItem">
           <label>Is series?</label>
           <select
             className="addMovieSelect"
@@ -186,9 +201,13 @@ function NewMovie() {
           <label>Video</label>
           <input type="file" onChange={(e) => setVideo(e.target.files[0])} />
         </div>
-        <button className="addMovieButton" onClick={uploaded !== 5 ? handleUpload: handleSubmit}>
-          {uploaded !== 5 ?
-          'Created ' + progress.toFixed(0) + '%' : 'Upload Movie'}
+        <button
+          className="addMovieButton"
+          onClick={uploaded !== 5 ? handleUpload : handleSubmit}
+        >
+          {uploaded !== 5
+            ? "Created " + progress.toFixed(0) + "%"
+            : "Upload Movie"}
         </button>
       </form>
     </div>

@@ -14,6 +14,7 @@ function Movie() {
   const [img, setImg] = useState(location.movie.img);
   const [video, setVideo] = useState(location.movie.video);
   const [trailer, setTrailer] = useState(location.movie.trailer);
+  const [totalUploaded, setTotalUploaded] = useState(0);
   const [uploaded, setUploaded] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -25,61 +26,62 @@ function Movie() {
   };
 
   const upload = (items) => {
-      items.forEach((item) => {
-
-          const fileName = new Date().getTime() + item.label + item.file.name;
-          const storageRef = ref(storage, `/items/${fileName}`);
-          const uploadTask = uploadBytesResumable(storageRef, item.file);
-          uploadTask.on(
-            "state_changed",
-            (snapshot) => {
-              setProgress(
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-              );
-              switch (snapshot.state) {
-                case "paused":
-                  console.log("paused...");
-                  break;
-                case "running":
-                  console.log("uploading...");
-                  break;
-                case "success":
-                  console.log("uploaded");
-                  break;
-              }
-            },
-            (error) => {
-              switch (error.code) {
-                case "storage/unauthorized":
-                  console.log("not authorized ");
-                  break;
-                case "storage/canceled":
-                  console.log("cancelled");
-                  break;
-                case "storage/unknown":
-                  console.log("unknown storage");
-                  break;
-              }
-            },
-            () => {
-              getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-                setUploaded((prev) => prev + 1);
-                setMovie((prev) => {
-                  return { ...prev, [item.label]: url };
-                });
-              });
+    items.forEach((item) => {
+      if (item.file !== item.original) {
+        const fileName = new Date().getTime() + item.label + item.file.name;
+        const storageRef = ref(storage, `/items/${fileName}`);
+        const uploadTask = uploadBytesResumable(storageRef, item.file);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            setProgress(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+            switch (snapshot.state) {
+              case "paused":
+                console.log("paused...");
+                break;
+              case "running":
+                console.log("uploading...");
+                break;
+              case "success":
+                console.log("uploaded");
+                break;
             }
-          );
-        });
-      items = [];
+          },
+          (error) => {
+            switch (error.code) {
+              case "storage/unauthorized":
+                console.log("not authorized ");
+                break;
+              case "storage/canceled":
+                console.log("cancelled");
+                break;
+              case "storage/unknown":
+                console.log("unknown storage");
+                break;
+            }
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+              setUploaded((prev) => prev + 1);
+              setMovie((prev) => {
+                return { ...prev, [item.label]: url };
+              });
+            });
+          }
+        );
+      }
+    });
+    items = [];
   };
 
   const handleUpload = (e) => {
     e.preventDefault();
     upload([
-      { file: img, label: "img" },
-      { file: trailer, label: "trailer" },
-      { file: video, label: "video" },
+      { file: img, original: location.movie.img, label: "img" },
+      { file: trailer, original: location.movie.trailer, label: "trailer" },
+      { file: video, original: location.movie.video, label: "video" },
     ]);
   };
 
@@ -135,22 +137,50 @@ function Movie() {
               onChange={handleChange}
             />
             <label>Genre</label>
-            <input type="text" name="genre" placeholder={movie.genre} onChange={handleChange} />
+            <input
+              type="text"
+              name="genre"
+              placeholder={movie.genre}
+              onChange={handleChange}
+            />
+            <label>Duration</label>
+            <input
+              type="text"
+              name="duration"
+              placeholder={movie.duration}
+              onChange={handleChange}
+            />
             <label>Year</label>
-            <input type="text" name="year" placeholder={movie.year} onChange={handleChange} />
+            <input
+              type="text"
+              name="year"
+              placeholder={movie.year}
+              onChange={handleChange}
+            />
             <label>Limit</label>
-            <input type="text" name="limit" placeholder={movie.limit} onChange={handleChange} />
+            <input
+              type="text"
+              name="limit"
+              placeholder={movie.limit}
+              onChange={handleChange}
+            />
             <label>Trailer</label>
             <input
               type="file"
               placeholder={movie.trailer}
-              onChange={(e) => setTrailer(e.target.files[0])}
+              onChange={(e) => {
+                setTotalUploaded((prev) => prev + 1);
+                setTrailer(e.target.files[0]);
+              }}
             />
             <label>Video</label>
             <input
               type="file"
               placeholder={movie.video}
-              onChange={(e) => setVideo(e.target.files[0])}
+              onChange={(e) => {
+                setTotalUploaded((prev) => prev + 1);
+                setVideo(e.target.files[0]);
+              }}
             />
           </div>
           <div className="movieFormRight">
@@ -161,16 +191,19 @@ function Movie() {
               </label>
               <input
                 type="file"
-                onChange={(e) => setImg(e.target.files[0])}
+                onChange={(e) => {
+                  setTotalUploaded((prev) => prev + 1);
+                  setImg(e.target.files[0]);
+                }}
                 id="file"
                 style={{ display: "none" }}
               />
             </div>
             <button
               className="movieButton"
-              onClick={uploaded !== 3 ? handleUpload : handleSubmit}
+              onClick={uploaded !== totalUploaded ? handleUpload : handleSubmit}
             >
-              {uploaded !== 3
+              {uploaded !== totalUploaded
                 ? "Created " + progress.toFixed(0) + "%"
                 : "Update Movie"}
             </button>

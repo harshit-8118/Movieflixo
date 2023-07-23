@@ -4,24 +4,27 @@ import { useContext, useEffect, useState } from "react";
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { MovieContext } from "../../context/movieContext/MovieContext";
-import { deleteMovie, getMovies } from "../../context/movieContext/MovieApiCalls";
+import {
+  deleteMovie,
+  getMovies,
+} from "../../context/movieContext/MovieApiCalls";
 
 function MovieList() {
-  const {movies, dispatch} = useContext(MovieContext);
+  const { movies, dispatch } = useContext(MovieContext);
 
   useEffect(() => {
     getMovies(dispatch);
-  }, [dispatch])
-  
+  }, [dispatch]);
+
   const handleDelete = (movieID) => {
     deleteMovie(movieID, dispatch);
-  }
+  };
   const columns = [
-    { field: "_id", headerName: "ID", width: 70 },
+    { field: "_id", headerName: "ID", width: 200 },
     {
       field: "movie",
       headerName: "Movie",
-      width: 200,
+      width: 180,
       renderCell: (params) => {
         return (
           <div className="movieListItem">
@@ -31,10 +34,11 @@ function MovieList() {
         );
       },
     },
-    { field: "genre", headerName: "Genre", width: 150 },
-    { field: "year", headerName: "Year", width: 150 },
-    { field: "limit", headerName: "Limit", width: 150 },
-    { field: "isSeries", headerName: "isSeries", width: 150 },
+    { field: "genre", headerName: "Genre", width: 120 },
+    { field: "year", headerName: "Year", width: 80 },
+    { field: "limit", headerName: "Limit", width: 80 },
+    { field: "isSeries", headerName: "isSeries", width: 80 },
+    { field: "duration", headerName: "Duration", width: 150 },
     {
       field: "action",
       headerName: "Action",
@@ -42,10 +46,14 @@ function MovieList() {
       renderCell: (params) => {
         return (
           <>
-          <Link to={`/movies/${params.row._id}`} state={{movie: params.row}}>
-            <button className="movieListEdit">Edit</button>
-          </Link>
-            <DeleteOutline className="movieListDelete" onClick={() => handleDelete(params.row._id)} />
+            <Link
+              to={`/movies/${params.row._id}`}
+              state={{ movie: params.row }}
+            >
+              <button className="movieListEdit">Edit</button>
+            </Link>
+            <DeleteOutline className="movieListDelete" />
+            {/* <DeleteOutline className="movieListDelete" onClick={() => handleDelete(params.row._id)} /> */}
           </>
         );
       },
