@@ -1,22 +1,20 @@
 import { InfoOutlined, PlayArrow } from "@mui/icons-material";
 import "./featured.scss";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Featured = ({ type }) => {
+const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState();
   useEffect(() => {
     const getContent = async () => {
       try {
-        const res = await axios.get(
-          `movies/random?type=${type}`,
-          {
-            headers: {
-              token:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjE4YTJmODEzZjY5ZWZlMWI1M2UyOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4OTQ4ODQzOCwiZXhwIjoxNjg5OTIwNDM4fQ.iacOrvq4xgURDyjBpu0zqrqaE9i4cuGG0UlZcSKwG1o",
-            },
-          }
-        );
+        const res = await axios.get(`movies/random?type=${type}`, {
+          headers: {
+            token:
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+          },
+        });
         setContent(res.data[0]);
       } catch (err) {
         console.log(err);
@@ -29,7 +27,11 @@ const Featured = ({ type }) => {
       {type && (
         <div className="category">
           <span>{type === "movie" ? "Movies" : "Series"}</span>
-          <select name="genre" id="genre">
+          <select
+            name="genre"
+            id="genre"
+            onChange={(e) => setGenre(e.target.value)}
+          >
             <option>Genre</option>
             <option value="adventure">Adventure</option>
             <option value="comedy">Comedy</option>
@@ -47,24 +49,15 @@ const Featured = ({ type }) => {
           </select>
         </div>
       )}
-      <img
-        src={content && content.img}
-        alt=""
-      />
+      <img src={content && content.img} alt="" />
       <div className="info">
-        <img
-          src={content && content.imgTitle}
-          alt=""
-          className="bgimg"
-        />
-        <span className="desc">
-           {content && content.desc}
-        </span>
+        <img src={content && content.imgTitle} alt="" className="bgimg" />
+        <span className="desc">{content && content.desc}</span>
         <div className="buttons">
-          <button className="play">
+          <Link to={"/watch"} state={content} className="play link">
             <PlayArrow />
             <span>Play</span>
-          </button>
+          </Link>
           <button className="more">
             <InfoOutlined />
             <span>Info</span>

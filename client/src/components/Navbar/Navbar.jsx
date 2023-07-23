@@ -1,29 +1,38 @@
 import { ArrowDropDown, Notifications, Search } from "@mui/icons-material";
 import "./navbar.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { logout } from "../../context/authContext/AuthActions";
 
 const Navbar = () => {
   const [isScrolled, setisScrolled] = useState(false);
+
+  const { dispatch } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   window.onscroll = () => {
     setisScrolled(window.pageYOffset === 0 ? false : true);
-    return () => window.onscroll= null;
+    return () => (window.onscroll = null);
   };
   return (
-    <div className={isScrolled ? "navbar scrolled": "navbar"}>
+    <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
         <div className="left">
           <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Logonetflix.png/1200px-Logonetflix.png?20170904093427"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Logonetflix.png/1200px-Logonetflix.png?20170904093427"
             alt=""
           />
-          <Link to={'/'} className="link" > 
-          <span>Homepage</span>
+          <Link to={"/"} className="link">
+            <span>Homepage</span>
           </Link>
-          <Link to={'/series'} className="link" >
+          <Link to={"/series"} className="link">
             <span>Series</span>
           </Link>
-          <Link to={'/movies'} className="link" >
+          <Link to={"/movies"} className="link">
             <span>Movies</span>
           </Link>
           <span>New and Popular</span>
@@ -40,8 +49,10 @@ const Navbar = () => {
           <div className="profile">
             <ArrowDropDown className="icon" />
             <div className="options">
-              <span>Settings</span>
-              <span>Logout</span>
+              <span className="makeFocus">Settings</span>
+              <span className="makeFocus" onClick={handleLogout}>
+                Logout
+              </span>
             </div>
           </div>
         </div>

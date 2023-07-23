@@ -4,7 +4,6 @@
   overflow: hidden;
   background-color: rgb(4, 0, 0);
   margin-right: 5px;
-  cursor: pointer;
   color: white;
   img {
     width: 100%;
@@ -22,7 +21,7 @@
   }
   &:hover {
     width: 325px;
-    height: 300px;
+    height: 330px;
     box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
     position: absolute;
     top: -150px;
@@ -65,9 +64,24 @@
   .desc {
     font-size: 13px;
     margin-bottom: 10px;
+    width: 55%;
+    height: 2.5rem;
+    overflow: hidden;
   }
   .genre {
     font-size: 14px;
     color: rgb(179, 175, 175);
+  }
+  .watchButton{
+    background-color: #2b2727;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover{
+      background-color: #1e1c1c;
+    }
   }
 }
