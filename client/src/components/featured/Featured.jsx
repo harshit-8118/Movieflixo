@@ -17,7 +17,7 @@ const Featured = ({ type, setGenre }) => {
         });
         setContent(res.data[0]);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     getContent();
@@ -58,10 +58,10 @@ const Featured = ({ type, setGenre }) => {
             <PlayArrow />
             <span>Play</span>
           </Link>
-          <button className="more">
+          <Link to={`/view/${content && content._id}`} state={content} className="more link">
             <InfoOutlined />
             <span>Info</span>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

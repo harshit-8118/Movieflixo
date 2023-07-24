@@ -1,67 +1,154 @@
+@import "../../app.scss";
+
 .navbar {
-    color: #fff;
-    font-size: 14px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 99;
-    background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.5) 50%) ;
+  color: #fff;
+  font-size: 14px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.5) 40%);
 
-    &.scrolled {
-        background-color: var(--main-color);
+  &.scrolled {
+    background-color: var(--main-color);
+  }
+  .container {
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    @include md {
+      padding: 0;
     }
-    .container  {
-        padding: 0 50px;
-        display: flex;
+    .left {
+      display: flex;
+      align-items: center;
+      @include md {
+        display: none;
+      }
+      img {
+        width: 96px;
+        margin-right: 20px;
+      }
+      a {
+        margin-right: 20px;
+        cursor: pointer;
+      }
+    }
+    .toggle-btn{
+        z-index: 1000;
+        width: 40px;
+        height: 4px;
+        margin-left: 20px;
+        background-color: white;
+        position: relative;
+        display: none;
+        @include md{
+            display: block;
+        }
+        &::before{
+            content: '';
+            width: 35px;
+            height: 3px;
+            position: absolute;
+            background-color: white;
+            margin: 10px 0;
+        }
+        &::after{
+            content: '';
+            width: 40px;
+            height: 4px;
+            position: absolute;
+            background-color: white;
+            margin: -10px 0;
+        }
+        transform: rotate(180deg);
+    }
+    .left-hamburger {
+      display: none;
+      @include md {
+        width: 100%;
+        background: linear-gradient(
+          to top,
+          transparent 0%,
+          rgb(0, 0, 0, 0.8) 20%
+        );
+        height: 50vh;
+        width: 100vw;
+        justify-content: center;
         align-items: center;
-        justify-content: space-between;
-        height: 70px;
-        .left {
-            display: flex;
-            align-items: center;
-            img {
-                width: 96px;
-                margin-right: 20px;
-            }
-            span {
-                margin-right: 20px;
-                cursor: pointer;
-            }
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(20vh);
+        &.hidden {
+          display: none;
         }
-
-        .right {
-            display: flex;
-            align-items: center;
-            .icon {
-                margin: 0 15px;
-                cursor: pointer;
-            }
-            img {
-                width: 20px;
-                height: 20px;
-                border-radius: 20px;
-                object-fit: cover;
-                cursor: pointer;
-            }
-            .profile {
-                .options {
-                    display: none;
-                    background-color: var(--main-color);
-                    border-radius: 5px;
-                }
-                span {
-                    padding: 10px;
-                    cursor: pointer;
-                }
-                &:hover {
-                    .options{
-                        display: flex;
-                        flex-direction: column;
-                        position: absolute;
-                    }
-                }
-            }
+        .hamburger-content {
+          display: flex;
+          flex-direction: column;
+          &.hidden {
+            display: none;
+          }
+          img {
+            width: 96px;
+            position: absolute;
+            top: 25px;
+          }
+          a {
+            margin-top: 10px;
+            cursor: pointer;
+          }
         }
+      }
     }
+    .right {
+      display: flex;
+      align-items: center;
+      .icon {
+        margin: 0 15px;
+        cursor: pointer;
+        @include md {
+          display: none;
+        }
+      }
+      .kid {
+        @include md {
+          display: none;
+        }
+      }
+      .icon {
+        margin: 0 15px;
+        cursor: pointer;
+      }
+      img {
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        object-fit: cover;
+        cursor: pointer;
+      }
+      .profile {
+        .options {
+          display: none;
+          background-color: var(--main-color);
+          border-radius: 5px;
+        }
+        span {
+          padding: 10px;
+          cursor: pointer;
+        }
+        &:hover {
+          .options {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            right: 10px;
+          }
+        }
+      }
+    }
+  }
 }

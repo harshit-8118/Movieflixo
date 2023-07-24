@@ -23,7 +23,7 @@ const Listitem = ({ index, item }) => {
         });
         setMovie(res.data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     getMovie();
@@ -36,10 +36,12 @@ const Listitem = ({ index, item }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <img src={movie.img} alt="" />
-      <h3>{movie.title}</h3>
+      <h3>{movie && movie.title && movie.title.substring(0, Math.min(33, movie.title.length))}{movie && movie.title && movie.title.length > 33?'...':''}</h3>
       {isHovered ? (
         <>
+          <Link to="/watch" state={movie} className="link">
           <video src={movie.trailer} autoPlay={true} loop />
+          </Link>
           <div className="itemInfo">
             <div className="icons">
               <Link to="/watch" state={movie} className="link">
@@ -57,7 +59,7 @@ const Listitem = ({ index, item }) => {
           </div>
           <div className="desc">{movie.desc}</div>
           <div className="genre">{movie.genre}</div>
-          <Link to="/watch" state={movie} className="link">
+          <Link to={`/view/${movie._id}`} state={movie} className="link">
             <span className="watchButton">Watch</span>
           </Link>
         </>

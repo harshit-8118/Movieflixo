@@ -13,7 +13,6 @@ const Home = ({ type }) => {
   useEffect(() => {
     const getRandomLists = async () => {
       try {
-        console.log(JSON.parse(localStorage.getItem("user")).accessToken);
         const res = await axios.get(
           `lists${type ? "?type=" + type : ""}${
             genre ? "&genre=" + genre : ""
@@ -28,7 +27,7 @@ const Home = ({ type }) => {
         );
         setLists(res.data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     getRandomLists();
