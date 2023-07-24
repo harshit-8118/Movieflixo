@@ -1,0 +1,199 @@
+.viewPage {
+  width: 100%;
+  min-width: 600px;
+  .back {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    color: white;
+    z-index: 2;
+  }
+  .wrapper {
+    width: 100%;
+    min-height: 100vh;
+    color: white;
+    padding: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    .movie-img {
+      box-shadow: 0px 0px 15px -5px;
+      overflow: hidden;
+      width: 400px;
+      height: 90vh;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .movie-desc {
+      width: calc(100vw - 600px);
+      min-width: 500px;
+      min-height: 70vh;
+      padding: 20px 40px;
+      .movie-title-year {
+        font-size: 40px;
+      }
+      .movie-date-genre-duration {
+        display: flex;
+        list-style: none;
+        li {
+          margin: 8px 10px;
+        }
+      }
+      .movie-bottom {
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+        .movie-rating {
+          position: relative;
+          width: 110px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          .movie-rating-number {
+            font-size: 20px;
+            position: absolute;
+            top: 19px;
+            left: 13px;
+          }
+          img {
+            width: 60px;
+            height: 60px;
+            margin-right: 3px;
+          }
+        }
+        .movie-reaction {
+          display: flex;
+          align-items: center;
+          margin: 0 20px;
+          i {
+            background-color: rgb(3, 0, 15);
+            padding: 8px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 5px;
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            &:hover {
+              background-color: rgb(35, 33, 33);
+            }
+            .icon {
+              font-size: 20px;
+              align-self: center;
+            }
+          }
+        }
+      }
+      .movie-desc-desc {
+        margin: 20px 0;
+        width: 99%;
+        height: max-content;
+        span {
+          font-size: 32px;
+          padding: 10px 0;
+        }
+        p {
+          padding: 10px 0;
+          font-size: 14px;
+        }
+      }
+      .director-content {
+        display: flex;
+        width: 300px;
+        justify-content: space-between;
+        padding: 15px;
+        .director {
+          display: flex;
+          flex-direction: column;
+          span {
+            margin: 5px 0;
+            font-size: 18px;
+          }
+          i {
+            color: rgb(159, 158, 158);
+          }
+        }
+      }
+    }
+  }
+  .movie-cast-budget {
+    border: 1px solid black;
+    padding: 30px;
+    position: relative;
+    width: 100%;
+    overflow: auto;
+    margin: 20px 0;
+    .movie-b-left {
+      display: flex;
+      width: max-content;
+      margin-top: 10px;
+      .movie-cast-card {
+        width: 120px;
+        margin: 0 20px;
+        box-shadow: 0px 0px 15px -10px;
+        border-radius: 10px;
+        img {
+          width: 100%;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          height: 150px;
+          object-fit: cover;
+        }
+        .movie-cast-card-bottom {
+          display: flex;
+          flex-direction: column;
+          p {
+            color: darkgray;
+            font-weight: 300;
+          }
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+  .movie-b-right {
+    width: 400px;
+    box-shadow: 0px 0px 15px -8px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    margin: 20px auto;
+    .item {
+      display: flex;
+      flex-direction: column;
+      margin: 15px;
+      p {
+        color: darkgray;
+        font-weight: 300;
+        margin-top: 5px;
+      }
+      span {
+        font-weight: 500;
+        font-size: 22px;
+      }
+      .movie-keywords {
+        display: flex;
+        flex-wrap: wrap;
+        span {
+          background-color: rgb(208, 208, 208);
+          font-size: 16px;
+          padding: 5px 10px;
+          height: 2rem;
+          border: none;
+          border-radius: 12px;
+          margin: 2px 10px;
+        }
+      }
+    }
+  }
+}
