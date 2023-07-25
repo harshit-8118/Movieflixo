@@ -1,17 +1,16 @@
 import "./ViewPage.scss";
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
-  Add,
   ArrowBackOutlined,
   Favorite,
+  FavoriteBorder,
   Flag,
-  HeartBroken,
   ListAltOutlined,
   PlayArrow,
   Star,
-  ThumbDownAltOutlined,
-  ThumbUpAltOutlined,
+  StarBorder,
+  StarRate,
 } from "@mui/icons-material";
 import Footer from "../footer/Footer";
 import { cast_crew_data } from "./CastCrewData";
@@ -19,6 +18,9 @@ const progress = require("./progress.png");
 
 function ViewPage() {
   const movie = useLocation().state;
+  const [like, setLike] = useState(false);
+  const [likeStar, setLikeStar] = useState(false);
+
   return (
     <div className="viewPage">
       <Link to={"/movies"} className="link">
@@ -51,23 +53,30 @@ function ViewPage() {
               <span>User Score</span>
             </div>
             <div className="movie-reaction">
-              <i>
+              <a href="" className="link">
                 <ListAltOutlined className="icon" />
-              </i>
-              <i>
-                <Favorite className="icon" />
-              </i>
-              <i>
-                <Star className="icon" />
-              </i>
-              <i>
+              </a>
+              <a onClick={() => setLike(!like)}>
+                {
+                  like ? 
+                  <Favorite className="icon" />:
+                  <FavoriteBorder className="icon" />
+                }
+              </a>
+              <a onClick={() => setLikeStar(!likeStar)}>
+                {
+                  likeStar ? 
+                  <StarBorder className="icon" />:
+                  <StarRate className="icon" />
+                }
+              </a>
+              <a>
                 <Flag className="icon" />
-              </i>
+              </a>
               <Link to={`/watch`} state={movie} className="link" style={{display: 'flex', alignItems: 'center'}}>
-                <i>
+                <a>
                   <PlayArrow className="icon" />
-                </i>
-                Play
+                </a>
               </Link>
             </div>
           </div>

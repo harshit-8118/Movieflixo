@@ -1,6 +1,8 @@
 .viewPage {
   width: 100%;
   min-width: 600px;
+  background-color: #272727;
+  color: white;
   .back {
     display: flex;
     align-items: center;
@@ -72,7 +74,7 @@
           display: flex;
           align-items: center;
           margin: 0 20px;
-          i {
+          a {
             background-color: rgb(3, 0, 15);
             padding: 8px;
             width: 40px;
@@ -150,6 +152,7 @@
         .movie-cast-card-bottom {
           display: flex;
           flex-direction: column;
+          margin: 2px;
           p {
             color: darkgray;
             font-weight: 300;
@@ -173,7 +176,7 @@
       flex-direction: column;
       margin: 15px;
       p {
-        color: darkgray;
+        color: rgb(96, 95, 95);
         font-weight: 300;
         margin-top: 5px;
       }
@@ -185,7 +188,7 @@
         display: flex;
         flex-wrap: wrap;
         span {
-          background-color: rgb(208, 208, 208);
+          background-color: rgb(104, 102, 102);
           font-size: 16px;
           padding: 5px 10px;
           height: 2rem;

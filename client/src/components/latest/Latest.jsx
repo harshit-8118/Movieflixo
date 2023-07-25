@@ -42,7 +42,7 @@ const Latest = ({ list }) => {
       }
     };
     getLatestMovies();
-  }, []);
+  }, [], () => {console.log(movies)});
   return (
     <div className="list">
       <span className="listTitle">{'Latest Movies & series'}</span>
