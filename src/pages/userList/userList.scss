@@ -3,6 +3,20 @@
 .userList {
     flex: 4;
     padding: 20px;
+    .userTitleContainer{
+        @include flexCenter(row);
+        justify-content: space-between;
+        .userAddButton{
+            width: 80px;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            background-color: teal;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
+    }
     .userListUser {
         @include flexCenter(row);
         img {

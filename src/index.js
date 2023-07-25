@@ -5,13 +5,16 @@ import reportWebVitals from "./reportWebVitals";
 import { AuthContextProvider } from "../src/context/authContext/AuthContext";
 import { MovieContextProvider } from "./context/movieContext/MovieContext";
 import { ListsContextProvider } from "./context/listsContext/ListsContext";
+import { UserContextProvider } from "./context/userContext/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthContextProvider>
     <MovieContextProvider>
       <ListsContextProvider>
-        <App />
+        <UserContextProvider>
+          <App />
+        </UserContextProvider>
       </ListsContextProvider>
     </MovieContextProvider>
   </AuthContextProvider>

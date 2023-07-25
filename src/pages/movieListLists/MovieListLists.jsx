@@ -31,7 +31,8 @@ function MovieListLists() {
           <Link to={`/lists/${params.row._id}`} state={{list: params.row}}>
             <button className="movieListListsEdit">Edit</button>
           </Link>
-            <DeleteOutline className="movieListListsDelete" onClick={() => handleDelete(params.row._id)} />
+            <DeleteOutline className="movieListListsDelete"/>
+            {/* <DeleteOutline className="movieListListsDelete" onClick={() => handleDelete(params.row._id)} /> */}
           </>
         );
       },

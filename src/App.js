@@ -33,7 +33,7 @@ function App() {
               <Route path="/newUser" element={user ? <NewUser />: <Navigate to={'/login'} />} />
               <Route path="/movies" element={user ? <MovieList />: <Navigate to={'/login'} />} />
               <Route path="/movies/:movieId" element={<Movie />} />
-              <Route path="/newMovie" element={<NewMovie />} />
+              <Route path="/newMovie" element={user ? <NewMovie />: <Navigate to={'/login'} />} />
               <Route path="/lists" element={user ? <MovieListLists />: <Navigate to={'/login'} />} />
               <Route path="/lists/:listId" element={<List />} />
               <Route path="/newList" element={<NewList />} />

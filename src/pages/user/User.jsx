@@ -8,9 +8,23 @@ import {
   Publish,
 } from "@mui/icons-material";
 import "./user.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useContext, useState } from "react";
+import { updateUser } from "../../context/userContext/UserApiCalls";
+import { UsersContext } from "../../context/userContext/UserContext";
 
 function User() {
+  const location = useLocation().state;
+  const [user, setUser] = useState(location.user);
+  const {dispatch} = useContext(UsersContext);
+  function handleChange(e) {
+    const value = e.target.value;
+    setUser({ ...user, [e.target.name]: value });
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateUser(user, dispatch);
+  };
   return (
     <div className="user">
       <div className="userTitleContainer">
@@ -22,13 +36,9 @@ function User() {
       <div className="userContainer">
         <div className="userShow">
           <div className="userShowTop">
-            <img
-              src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YWRtaW58ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60"
-              alt=""
-              className="userShowImg"
-            />
+            <img src={user.profilePic} alt="" className="userShowImg" />
             <div className="userShowTopTitle">
-              <span className="userShowUsername">Adam Barrack</span>
+              <span className="userShowUsername">{user.username}</span>
               <span className="userShowJobTitle">Software Engineer</span>
             </div>
           </div>
@@ -36,7 +46,7 @@ function User() {
             <span className="userShowTitle">Account Details</span>
             <div className="userShowInfo">
               <PermIdentity className="userShowIcon" />
-              <span className="userShowInfoTitle">anabella23</span>
+              <span className="userShowInfoTitle">{user.username}</span>
             </div>
             <div className="userShowInfo">
               <CalendarToday className="userShowIcon" />
@@ -49,7 +59,7 @@ function User() {
             </div>
             <div className="userShowInfo">
               <MailOutline className="userShowIcon" />
-              <span className="userShowInfoTitle">abc@gmail.com</span>
+              <span className="userShowInfoTitle">{user.email}</span>
             </div>
             <div className="userShowInfo">
               <LocationSearching className="userShowIcon" />
@@ -65,29 +75,38 @@ function User() {
                 <label>Username</label>
                 <input
                   type="text"
-                  placeholder="anabella23"
+                  placeholder={user.username}
                   className="userUpdateInput"
+                  name="username"
+                  onChange={handleChange}
                 />
               </div>
-              <div className="userUpdateItem">
-                <label>Full Name</label>
-                <input
-                  type="text"
-                  placeholder="Adam Barrack"
-                  className="userUpdateInput"
-                />
-              </div>
+
               <div className="userUpdateItem">
                 <label>Email</label>
                 <input
                   type="text"
-                  placeholder="abc@gmail.com"
+                  placeholder={user.email}
                   className="userUpdateInput"
+                  name="email"
+                  onChange={handleChange}
                 />
+              </div>
+              <div className="userUpdateItem">
+                <label>Is Admin?</label>
+                <select
+                  className="newUserSelect"
+                  name="isAdmin"
+                  onChange={handleChange}
+                >
+                  <option value={"false"}>No</option>
+                  <option value={"true"}>Yes</option>
+                </select>
               </div>
               <div className="userUpdateItem">
                 <label>Phone</label>
                 <input
+                  disabled
                   type="text"
                   placeholder="+91 923 423 2322"
                   className="userUpdateInput"
@@ -96,21 +115,15 @@ function User() {
               <div className="userUpdateItem">
                 <label>Address</label>
                 <input
+                  disabled
                   type="text"
                   placeholder="Jankipuram | India"
                   className="userUpdateInput"
                 />
               </div>
-            </div>
-            <div className="userUpdateRight">
-                <div className="userUpdateUpload">
-                    <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YWRtaW58ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" alt="" className="userUpdateImg" />
-                    <label htmlFor="file"><Publish /></label>
-                    <input type="file" id="file" style={{display:'none'}} />
-                </div>
-                <button className="userUpdateButton">
-                  Update
-                </button>
+              <div className="userUpdateRight">
+                <button className="userUpdateButton" onClick={handleSubmit}>Update</button>
+              </div>
             </div>
           </form>
         </div>
