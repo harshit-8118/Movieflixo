@@ -97,4 +97,18 @@ router.get("/", verify, async (req, res) => {
   }
 });
 
+router.get("/latest", verify, async (req, res) => {
+  if (req.user.isAdmin) {
+    try {
+      const this_year = new Date().getFullYear();
+      const movies = await Movie.aggregate([{ $match: { year: `${this_year}` } }, { $sample: { size: 20 } }]);
+      res.status(200).json(movies);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res.status(403).json("you're not allowed");
+  }
+});
+
 module.exports = router;
