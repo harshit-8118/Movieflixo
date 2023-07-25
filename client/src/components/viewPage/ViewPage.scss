@@ -1,6 +1,6 @@
 .viewPage {
   width: 100%;
-  min-width: 600px;
+  min-width: 500px;
   background-color: #272727;
   color: white;
   .back {
@@ -33,7 +33,7 @@
       }
     }
     .movie-desc {
-      width: calc(100vw - 600px);
+      width: calc(100vw - 700px);
       min-width: 500px;
       min-height: 70vh;
       padding: 20px 40px;

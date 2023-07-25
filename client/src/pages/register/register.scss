@@ -1,87 +1,118 @@
+@import "../../app.scss";
+
 .register {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  min-width: 500px;
+  min-height: 900px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+    linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)),
+    url("https://assets.nflxext.com/ffe/siteui/vlv3/530fc327-2ddb-4038-a3f0-2da2d9ccede1/9c547c8a-e707-4bdb-bdbc-843f134dd2a6/IN-en-20230619-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+  .top {
+    width: 100%;
+    .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 150px;
+      img {
+        width: 9rem;
+      }
+      a {
+        min-width: 180px;
+        .loginButton {
+          background-color: red;
+          font-weight: 500;
+          color: white;
+          border: 2px solid wheat;
+          border: none;
+          padding: 6px 15px;
+          border-radius: 5px;
+          font-size: 14px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .container {
+    color: white;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('https://assets.nflxext.com/ffe/siteui/vlv3/530fc327-2ddb-4038-a3f0-2da2d9ccede1/9c547c8a-e707-4bdb-bdbc-843f134dd2a6/IN-en-20230619-popsignuptwoweeks-perspective_alpha_website_large.jpg');
-    .top {
-        .wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 150px;
-            
-            img {
-                width: 9rem;
-            }
-            .loginButton {
-                background: red;
-                font-weight: 500;
-                color: white;
-                border: none;
-                padding: 6px 15px;
-                border-radius: 5px;
-                font-size: 14px;
-                cursor: pointer;
-            }
-        }
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    padding: 150px 20px 0 20px;
+    h1 {
+      font-weight: 900;
+      font-size: 40px;
+      margin-bottom: 20px;
+      @include md{
+        font-weight: 400;
+        font-size: 36px;
+      }
     }
-    .container {
+    h2 {
+      font-weight: 400;
+      font-size: 20px;
+      margin-bottom: 25px;
+      @include md{
+        font-weight: 300;
+      }
+    }
+    p {
+      font-weight: 400;
+      font-size: 20px;
+      margin-bottom: 5px;
+      @include md{
+        font-weight: 300;
+      }
+    }
+    .input {
+      width: 50%;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      height: 50px;
+      border-radius: 5px;
+        @include md{
+            flex-direction: column;
+        }
+      input {
+        width: 69%;
+        min-width: 300px;
+        height: 100%;
+        border: 1px solid gray;
+        padding: 10px;
         color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        font-size: 16px;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.6)
+        );
+        border-radius: 5px;
+        @include md{
+            margin-bottom: 10px;
+        }
+      }
+      .registerButton {
+        width: 29%;
+        background-color: red;
+        min-width: 130px;
+        height: 100%;
+        border-radius: 5px;
         align-items: center;
-        letter-spacing: 1px;
-        padding-top: 150px;
-        h1 {
-            font-weight: 900;
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
-        h2 {
-            font-weight: 400;
-            font-size: 20px;
-            margin-bottom: 25px;
-        }
-         p{
-            font-weight: 400;
-            font-size: 20px;
-            margin-bottom: 5px;
-         }
-         .input {
-            width: 50%;
-            background: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 10px;
-            height: 50px;
-            border-radius: 5px;
-
-            input {
-                width: 69%;
-                height: 100%;
-                border: 1px solid gray;
-                padding: 10px;
-                color: white;
-                font-size: 16px;
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
-                border-radius: 5px;
-            }
-            .registerButton {
-                width: 29%;
-                background-color: red;
-                height: 100%;
-                border-radius: 5px;
-                align-items: center;
-                justify-content: center;
-                display: flex;
-                color: white;
-                font-weight: 450;
-                font-size: 22px;
-                border: none;
-            }
-         }
+        justify-content: center;
+        display: flex;
+        color: white;
+        font-weight: 450;
+        font-size: 22px;
+        border: none;
+      }
     }
+  }
 }
