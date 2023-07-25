@@ -13,6 +13,9 @@
 .makeFocus:active{
     background-color: #0b0b0b;
 }
+.disabled-link{
+    color: rgb(192, 189, 189);
+}
 
 @mixin md {
     @media (max-width: 768px){

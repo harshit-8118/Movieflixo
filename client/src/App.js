@@ -11,7 +11,6 @@ import Register from "./pages/register/Register";
 import Watch from "./pages/watch/Watch";
 import { useContext } from "react";
 import { AuthContext } from "./context/authContext/AuthContext";
-import Footer from "./components/footer/Footer";
 import ViewPage from "./components/viewPage/ViewPage";
 
 const App = () => {
@@ -39,6 +38,7 @@ const App = () => {
             <Route path="/watch" element={<Watch />} />
           </>
         )}
+        <Route path="*" element={<Register />} />
       </Routes>
     </Router>
   );
