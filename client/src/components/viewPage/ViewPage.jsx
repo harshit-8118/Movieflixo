@@ -67,7 +67,7 @@ function ViewPage() {
                 <i>
                   <PlayArrow className="icon" />
                 </i>
-                Play Trailer
+                Play
               </Link>
             </div>
           </div>

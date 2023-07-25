@@ -5,6 +5,7 @@ import List from "../../components/list/List";
 import "./home.scss";
 import axios from "axios";
 import Footer from "../../components/footer/Footer";
+import Latest from "../../components/latest/Latest";
 
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
@@ -36,6 +37,7 @@ const Home = ({ type }) => {
     <div className="home">
       <Navbar />
       <Featured type={type} setGenre={setGenre} />
+      <Latest />
       {lists && lists.map((list) => <List key={list._id} list={list} />)}
       <Footer />
     </div>

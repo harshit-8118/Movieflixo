@@ -70,6 +70,7 @@
       display: none;
       @include md {
         width: 100%;
+        min-width: 400px;
         background: linear-gradient(
           to top,
           transparent 0%,
