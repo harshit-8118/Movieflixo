@@ -6,6 +6,7 @@ import "./home.scss";
 import axios from "axios";
 import Footer from "../../components/footer/Footer";
 import Latest from "../../components/latest/Latest";
+import { baseUrl } from "../../App";
 
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
@@ -15,9 +16,10 @@ const Home = ({ type }) => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `lists${type ? "?type=" + type : ""}${
-            genre ? "&genre=" + genre : ""
-          }`,
+          baseUrl +
+            `lists${type ? "?type=" + type : ""}${
+              genre ? "&genre=" + genre : ""
+            }`,
           {
             headers: {
               token:

@@ -8,7 +8,6 @@ import {
   Flag,
   ListAltOutlined,
   PlayArrow,
-  Star,
   StarBorder,
   StarRate,
 } from "@mui/icons-material";
@@ -35,7 +34,7 @@ function ViewPage() {
         }}
       >
         <div className="movie-img">
-          <img src={movie.img} />
+          <img src={movie.img} alt="png"/>
         </div>
         <div className="movie-desc">
           <span className="movie-title-year">
@@ -49,7 +48,7 @@ function ViewPage() {
           <div className="movie-bottom">
             <div className="movie-rating">
               <span className="movie-rating-number">80%</span>
-              <img src={progress} />
+              <img src={progress} alt="png"/>
               <span>User Score</span>
             </div>
             <div className="movie-reaction">
@@ -57,23 +56,28 @@ function ViewPage() {
                 <ListAltOutlined className="icon" />
               </a>
               <a onClick={() => setLike(!like)}>
-                {
-                  like ? 
-                  <Favorite className="icon" />:
+                {like ? (
+                  <Favorite className="icon" />
+                ) : (
                   <FavoriteBorder className="icon" />
-                }
+                )}
               </a>
               <a onClick={() => setLikeStar(!likeStar)}>
-                {
-                  likeStar ? 
-                  <StarBorder className="icon" />:
+                {likeStar ? (
+                  <StarBorder className="icon" />
+                ) : (
                   <StarRate className="icon" />
-                }
+                )}
               </a>
               <a>
                 <Flag className="icon" />
               </a>
-              <Link to={`/watch`} state={movie} className="link" style={{display: 'flex', alignItems: 'center'}}>
+              <Link
+                to={`/watch`}
+                state={movie}
+                className="link"
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 <a>
                   <PlayArrow className="icon" />
                 </a>
@@ -101,7 +105,7 @@ function ViewPage() {
         <div className="movie-b-left">
           {cast_crew_data.map((data, ind) => (
             <div className="movie-cast-card">
-              <img src={data["img-src"]} />
+              <img src={data["img-src"]} alt="png" />
               <div className="movie-cast-card-bottom">
                 <span>{data.name}</span>
                 <p>Self</p>

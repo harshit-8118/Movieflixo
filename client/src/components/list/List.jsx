@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
   ArrowBackIosOutlined,
   ArrowForwardIosOutlined,
@@ -8,7 +8,6 @@ import "./list.scss";
 
 const List = ({ list }) => {
   const listRef = useRef();
-  const [slideNumber, setSlideNumber] = useState(0);
   const handleClick = (dir) => {
     const distance = listRef.current.getBoundingClientRect();
     let screenWidth = window.screen.availWidth;

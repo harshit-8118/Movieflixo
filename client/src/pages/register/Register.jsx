@@ -1,11 +1,11 @@
 import {
-  ArrowBackIosOutlined,
   ArrowForwardIosOutlined,
 } from "@mui/icons-material";
 import "./register.scss";
 import { useRef, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { baseUrl } from "../../App";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +24,11 @@ const Register = () => {
     setPassword(passwordRef.current.value);
     setUsername(usernameRef.current.value);
     try {
-      await axios.post("/auth/register", { email, username, password });
+      await axios.post(baseUrl + "auth/register", {
+        email,
+        username,
+        password,
+      });
       navigate("/login");
     } catch (err) {}
   };

@@ -12,7 +12,9 @@ const Watch = () => {
           <ArrowBackOutlined /> Home
         </div>
       </Link>
-      {movie &&  <video className="video" src={movie.video} autoPlay progress controls />}
+      {movie && (
+        <video className="video" src={movie.video} autoPlay progress controls />
+      )}
     </div>
   );
 };

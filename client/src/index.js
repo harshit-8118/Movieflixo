@@ -6,9 +6,9 @@ import { AuthContextProvider } from "./context/authContext/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <AuthContextProvider>
-      <App />
-    </AuthContextProvider>
+  <AuthContextProvider>
+    <App />
+  </AuthContextProvider>
 );
 
 reportWebVitals();

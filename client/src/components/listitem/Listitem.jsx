@@ -10,6 +10,7 @@ import {
 } from "@mui/icons-material";
 import "./listitem.scss";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../../App";
 
 const Listitem = ({ index, item }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -19,7 +20,7 @@ const Listitem = ({ index, item }) => {
   useEffect(() => {
     const getMovie = async () => {
       try {
-        const res = await axios.get(`/movies/find/${item}`, {
+        const res = await axios.get(baseUrl + `movies/find/${item}`, {
           headers: {
             token:
               "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
@@ -55,7 +56,7 @@ const Listitem = ({ index, item }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img src={movie.img} alt="" />
+      <img src={movie.img} alt="png" />
       {isHovered ? (
         <div className="list-mobile">
           <h3>

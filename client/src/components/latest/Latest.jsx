@@ -4,7 +4,8 @@ import {
   ArrowForwardIosOutlined,
 } from "@mui/icons-material";
 import Listitem from "../listitem/Listitem";
-import axios from 'axios';
+import axios from "axios";
+import { baseUrl } from "../../App";
 
 const Latest = ({ list }) => {
   const listRef = useRef();
@@ -23,29 +24,34 @@ const Latest = ({ list }) => {
       listRef.current.style.transform = `translateX(${distFromLeft}px)`;
     }
   };
-  const [movies, setMovies] =  useState([]);
-  useEffect(() => {
-    const getLatestMovies = async () => {
-      try {
-        const res = await axios.get(
-          "movies/latest",
-          {
+  const [movies, setMovies] = useState([]);
+  useEffect(
+    () => {
+      const getLatestMovies = async () => {
+        try {
+          const res = await axios.get(baseUrl + "movies/latest", {
             headers: {
-              token:"Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+              token:
+                "Bearer " +
+                JSON.parse(localStorage.getItem("user")).accessToken,
             },
-          }
-        );
-        setMovies(res.data);
-      } catch (err) {
-        console.log('Error in latest movies connecting...')
-        // console.log(err);
-      }
-    };
-    getLatestMovies();
-  }, [], () => {console.log(movies)});
+          });
+          setMovies(res.data);
+        } catch (err) {
+          console.log("Error in latest movies connecting...");
+          // console.log(err);
+        }
+      };
+      getLatestMovies();
+    },
+    [],
+    () => {
+      console.log(movies);
+    }
+  );
   return (
     <div className="list">
-      <span className="listTitle">{'Latest Movies & series'}</span>
+      <span className="listTitle">{"Latest Movies & series"}</span>
       <div className="wrapper">
         <ArrowBackIosOutlined
           className="sliderArrow left"

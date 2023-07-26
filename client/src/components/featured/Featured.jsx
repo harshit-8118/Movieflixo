@@ -3,13 +3,14 @@ import "./featured.scss";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { baseUrl } from "../../App";
 
 const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState();
   useEffect(() => {
     const getContent = async () => {
       try {
-        const res = await axios.get(`movies/random?type=${type}`, {
+        const res = await axios.get(baseUrl + `movies/random?type=${type}`, {
           headers: {
             token:
               "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
@@ -46,16 +47,20 @@ const Featured = ({ type, setGenre }) => {
           </select>
         </div>
       )}
-      <img src={content && content.img} alt="" />
+      <img src={content && content.img} alt="png" />
       <div className="info">
-        <img src={content && content.imgTitle} alt="" className="bgimg" />
+        <img src={content && content.imgTitle} alt="png" className="bgimg" />
         <span className="desc">{content && content.desc}</span>
         <div className="buttons">
           <Link to={"/watch"} state={content} className="play link">
             <PlayArrow />
             <span>Play</span>
           </Link>
-          <Link to={`/view/${content && content._id}`} state={content} className="more link">
+          <Link
+            to={`/view/${content && content._id}`}
+            state={content}
+            className="more link"
+          >
             <InfoOutlined />
             <span>Info</span>
           </Link>

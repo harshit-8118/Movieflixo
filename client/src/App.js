@@ -12,6 +12,7 @@ import Watch from "./pages/watch/Watch";
 import { useContext } from "react";
 import { AuthContext } from "./context/authContext/AuthContext";
 import ViewPage from "./components/viewPage/ViewPage";
+export const baseUrl = "https://netflix-backend-gveq.onrender.com/api/";
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -32,7 +33,7 @@ const App = () => {
         />
         {user && (
           <>
-            <Route path="/view/:id" element={<ViewPage />} /> 
+            <Route path="/view/:id" element={<ViewPage />} />
             <Route path="/movies" element={<Home type={"movie"} />} />
             <Route path="/series" element={<Home type={"series"} />} />
             <Route path="/watch" element={<Watch />} />
