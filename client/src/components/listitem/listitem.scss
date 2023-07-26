@@ -8,6 +8,9 @@
   margin-right: 5px;
   color: white;
   .list-mobile{
+    h3{
+      color: white;
+    }
     @include md{
       display: none;
     }
@@ -46,6 +49,7 @@
       .icons {
         display: flex;
         margin-bottom: 10px;
+        color: white;
         .icon {
           border: 2px solid white;
           border-radius: 50%;
@@ -74,6 +78,8 @@
       width: 55%;
       height: 2.5rem;
       overflow: hidden;
+      color: white;
+
     }
     .genre {
       font-size: 14px;
@@ -86,6 +92,7 @@
       right: 30px;
       padding: 15px 30px;
       border-radius: 5px;
+      color: white;
       cursor: pointer;
       &:hover{
         background-color: #1e1c1c;
