@@ -30,7 +30,7 @@ export const createUser = async (user, dispatch) => {
 export const updateUser = async (user, dispatch) => {
     dispatch(updateUserStart());
     try{
-        const res = await axios.put(`/Users/${user._id}`, user, {
+        const res = await axios.put(`/users/${user._id}`, user, {
             headers: {token: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken}
         });
         console.log('update successful')
@@ -44,7 +44,7 @@ export const updateUser = async (user, dispatch) => {
 export const deleteUser = async (userID, dispatch) => {
     dispatch(deleteUserStart());
     try{
-        await axios.delete(`/Users/${userID}`, {
+        await axios.delete(`/users/${userID}`, {
             headers: {token: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken}
         });
         dispatch(deleteUserSuccess(userID));
