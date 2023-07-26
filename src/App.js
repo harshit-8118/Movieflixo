@@ -15,9 +15,11 @@ import NewMovie from "./pages/newmovie/NewMovie";
 import MovieListLists from "./pages/movieListLists/MovieListLists";
 import List from "./pages/list/List";
 import NewList from "./pages/newList/NewList";
+export const baseUrl = 'https://netflix-backend-gveq.onrender.com/api/';
 
 function App() {
   const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="App">
       {user && <Topbar />}

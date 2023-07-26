@@ -13,11 +13,12 @@ import {
   updateListStart,
   updateListSuccess,
 } from "./ListsActions";
+import {baseUrl} from '../../App';
 
 export const getLists = async (dispatch) => {
   dispatch(getListsStart());
   try {
-    const res = await axios.get("/lists", {
+    const res = await axios.get(baseUrl + "lists", {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -32,7 +33,7 @@ export const getLists = async (dispatch) => {
 export const createList = async (list, dispatch) => {
   dispatch(createListStart());
   try {
-    const res = await axios.post(`/lists`, list, {
+    const res = await axios.post(baseUrl + `lists`, list, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -47,7 +48,7 @@ export const createList = async (list, dispatch) => {
 export const updateList = async (list, dispatch) => {
   dispatch(updateListStart());
   try {
-    const res = await axios.put(`/lists/${list._id}`, list, {
+    const res = await axios.put(baseUrl + `lists/${list._id}`, list, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -63,7 +64,7 @@ export const updateList = async (list, dispatch) => {
 export const deleteList = async (listID, dispatch) => {
   dispatch(deleteListStart());
   try {
-    await axios.delete(`/lists/${listID}`, {
+    await axios.delete(baseUrl + `lists/${listID}`, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },

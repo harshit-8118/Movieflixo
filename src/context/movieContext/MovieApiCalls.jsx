@@ -1,10 +1,11 @@
 import {getMoviesStart, getMoviesSuccess, getMoviesFailure, deleteMovieStart, deleteMovieSuccess, deleteMovieFailure, createMovieStart, createMovieSuccess, createMovieFailure, updateMovieStart, updateMovieSuccess, updateMovieFailure} from './MovieActions'
 import axios from 'axios';
+import {baseUrl} from '../../App';
 
 export const getMovies = async (dispatch) => {
     dispatch(getMoviesStart());
     try{
-        const res = await axios.get('/movies', {
+        const res = await axios.get(baseUrl + 'movies', {
             headers: {token: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken}
         });
         dispatch(getMoviesSuccess(res.data));
@@ -17,7 +18,7 @@ export const getMovies = async (dispatch) => {
 export const createMovie = async (movie, dispatch) => {
     dispatch(createMovieStart());
     try{
-        const res = await axios.post(`/movies`, movie, {
+        const res = await axios.post(baseUrl + `movies`, movie, {
             headers: {token: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken}
         });
         dispatch(createMovieSuccess(res.data));
@@ -30,7 +31,7 @@ export const createMovie = async (movie, dispatch) => {
 export const updateMovie = async (movie, dispatch) => {
     dispatch(updateMovieStart());
     try{
-        const res = await axios.put(`/movies/${movie._id}`, movie, {
+        const res = await axios.put(baseUrl + `movies/${movie._id}`, movie, {
             headers: {token: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken}
         });
         console.log('update successful')
@@ -44,7 +45,7 @@ export const updateMovie = async (movie, dispatch) => {
 export const deleteMovie = async (movieID, dispatch) => {
     dispatch(deleteMovieStart());
     try{
-        await axios.delete(`/movies/${movieID}`, {
+        await axios.delete(baseUrl + `movies/${movieID}`, {
             headers: {token: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken}
         });
         dispatch(deleteMovieSuccess(movieID));

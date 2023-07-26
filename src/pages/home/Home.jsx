@@ -5,6 +5,7 @@ import FeaturedInfo from "../../components/featuredInfo/FeaturedInfo";
 import "./home.scss";
 import WidgetLg from "../../components/widgetlg/WidgetLg";
 import WidgetSm from "../../components/widgetsm/WidgetSm";
+import { baseUrl } from "../../App";
 const Home = () => {
   const MONTHS = useMemo(
     () => [
@@ -27,7 +28,7 @@ const Home = () => {
   useEffect(() => {
     const getStats = async () => {
       try {
-        const res = await axios.get("users/stats", {
+        const res = await axios.get(baseUrl + "users/stats", {
           headers: {
             token:
               "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,

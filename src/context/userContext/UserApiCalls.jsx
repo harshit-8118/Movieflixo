@@ -1,10 +1,11 @@
+import { baseUrl } from '../../App';
 import {getUsersStart, getUsersSuccess, getUsersFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure, createUserStart, createUserSuccess, createUserFailure, updateUserStart, updateUserSuccess, updateUserFailure} from './UserActions'
 import axios from 'axios';
 
 export const getUsers = async (dispatch) => {
     dispatch(getUsersStart());
     try{
-        const res = await axios.get('/users', {
+        const res = await axios.get(baseUrl + 'users', {
             headers: {token: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken}
         });
         dispatch(getUsersSuccess(res.data));
@@ -17,7 +18,7 @@ export const getUsers = async (dispatch) => {
 export const createUser = async (user, dispatch) => {
     dispatch(createUserStart());
     try{
-        const res = await axios.post(`/users/admin_register`, user, {
+        const res = await axios.post(baseUrl + `users/admin_register`, user, {
             headers: {token: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken}
         });
         dispatch(createUserSuccess(res.data));
@@ -30,7 +31,7 @@ export const createUser = async (user, dispatch) => {
 export const updateUser = async (user, dispatch) => {
     dispatch(updateUserStart());
     try{
-        const res = await axios.put(`/users/${user._id}`, user, {
+        const res = await axios.put(baseUrl + `users/${user._id}`, user, {
             headers: {token: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken}
         });
         console.log('update successful')
@@ -44,7 +45,7 @@ export const updateUser = async (user, dispatch) => {
 export const deleteUser = async (userID, dispatch) => {
     dispatch(deleteUserStart());
     try{
-        await axios.delete(`/users/${userID}`, {
+        await axios.delete(baseUrl + `users/${userID}`, {
             headers: {token: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken}
         });
         dispatch(deleteUserSuccess(userID));

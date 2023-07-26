@@ -2,12 +2,13 @@ import axios from "axios";
 import "./fetchMovie.scss";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../../App";
 
 function FetchMovie({ id }) {
   const [movie, setMovie] = useState(null);
   useEffect(() => {
     const getMovie = async () => {
-      const res = await axios.get(`/movies/find/${id}`, {
+      const res = await axios.get(baseUrl + `movies/find/${id}`, {
         headers: {
           token:
             "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,

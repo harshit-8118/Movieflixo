@@ -2,13 +2,14 @@ import { Visibility } from "@mui/icons-material";
 import "./widgetsm.scss";
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import { baseUrl } from "../../App";
 
 const WidgetSm = () => {
   const [newUsers, setNewUsers] = useState([]);
   useEffect(() => {
     const getNewUser = async () => {
       try{
-        const res = await axios.get('/users?new=true', {
+        const res = await axios.get(baseUrl+'users?new=true', {
           headers: {
             token:
               "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
