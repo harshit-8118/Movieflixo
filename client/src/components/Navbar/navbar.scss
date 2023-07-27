@@ -74,9 +74,9 @@
         background: linear-gradient(
           to top,
           transparent 0%,
-          rgb(0, 0, 0, 0.8) 20%
+          rgb(0, 0, 0, 0.9) 10%
         );
-        height: 50vh;
+        height: 70vh;
         width: 100vw;
         justify-content: center;
         align-items: center;
@@ -95,8 +95,7 @@
           }
           img {
             width: 96px;
-            position: absolute;
-            top: 25px;
+            margin-bottom: 30px;
           }
           a {
             margin-top: 10px;

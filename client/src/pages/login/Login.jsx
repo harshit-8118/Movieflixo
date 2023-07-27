@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { login } from "../../context/authContext/apiCalls";
 import "./login.scss";
@@ -41,7 +42,10 @@ const Login = () => {
             Sign In
           </button>
           <span>
-            New to Netflix? <b>Sign up now.</b>
+            New to Netflix?
+            <Link to="/register" className="link">
+              <b>Sign up now.</b>
+            </Link>
           </span>
           <small>
             This page is protected by google reCAPTCHA to ensure you're not a

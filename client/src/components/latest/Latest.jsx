@@ -13,12 +13,13 @@ const Latest = ({ list }) => {
     const distance = listRef.current.getBoundingClientRect();
     let screenWidth = window.screen.availWidth;
     let distFromLeft = distance.x - 50;
+    const value = screenWidth < 768 ? 230 : 460;
     if (dir === "left" && distFromLeft < 0) {
-      distFromLeft = Math.min(distFromLeft + 460, 0);
+      distFromLeft = Math.min(distFromLeft + value, 0);
       listRef.current.style.transform = `translateX(${distFromLeft}px)`;
     } else if (dir === "right") {
       distFromLeft = Math.max(
-        distFromLeft - 460,
+        distFromLeft - value,
         screenWidth - distance.width - 95
       );
       listRef.current.style.transform = `translateX(${distFromLeft}px)`;
